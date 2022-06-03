@@ -1,29 +1,44 @@
+
+// Container
 const container = document.querySelector("#container");
 container.style.display = "flex";
 container.style.flexDirection = "column";
 container.alignItems = "center";
 container.justifyContent = "center";
+// Prompt for determining number of rows and columns
+let gridNumber = prompt("How many rows?");
 
 
-let gridNumber = 16;
-
-container.style.width = `${gridNumber ** 2}px`;
-container.style.height = `${gridNumber ** 2}px`;
-
-
+// Loop for creating rows
 for (let i = 0; i < gridNumber; i++) {
 
-    const row = document.createElement("row");
+    const row = document.createElement("div");
     row.style.display = "flex";
-    row.style.height=`${gridNumber}px`;
+    row.style.height=`20px`;
     row.style.borderStyle="solid";
+    row.style.border="1px";
+  
     container.appendChild(row);
+    
 
-    for (let j = 0; j < gridNumber; j++) {
-        const column = document.createElement("column");
-        column.style.height=`${gridNumber}px`;
+    // Loop for creating columns
+    for (let j = 0; j < gridNumber; j++) { 
+        const column = document.createElement("div");
+        column.classList.add("square");
         column.style.borderStyle="solid";
+        column.style.borderColor="red";
         row.appendChild(column);
-        column.style.width=`${gridNumber}px`;
+        column.style.width=`14px`;
     }
 }
+    const column2 = document.querySelectorAll(".square")
+    const column3 = Array.from(column2);
+
+    //Event listening for sketching
+    column3.forEach((element) => {
+        element.addEventListener('mouseenter', ()=> {
+            element.style.backgroundColor="black";
+        })
+    })
+
+ 
