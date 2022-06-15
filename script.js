@@ -5,6 +5,18 @@ container.style.display = "flex";
 container.style.flexDirection = "column";
 container.alignItems = "center";
 container.justifyContent = "center";
+
+// Function for random hex color
+
+function getRandomColor() {
+    let letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++){
+        color += letters [Math.floor(Math.random()*16)];
+    }
+    return color;
+}
+
 // Prompt for determining number of rows and columns
 
 let gridNumber;
@@ -21,7 +33,7 @@ btn.addEventListener('click', () => {
     row.style.display = "flex";
     row.style.height=`20px`;
     row.style.borderStyle="solid";
-    row.style.border="1px";
+    row.style.borderWidth="0px";
   
     container.appendChild(row);
     
@@ -31,7 +43,7 @@ btn.addEventListener('click', () => {
         const column = document.createElement("div");
         column.classList.add("square");
         column.style.borderStyle="solid";
-        column.style.borderColor="red";
+        column.style.borderColor="black";
         row.appendChild(column);
         column.style.width=`14px`;
     }
@@ -42,7 +54,7 @@ btn.addEventListener('click', () => {
     //Event listening for sketching
     column3.forEach((element) => {
         element.addEventListener('mouseenter', ()=> {
-            element.style.backgroundColor="black";
+            element.style.backgroundColor=`${getRandomColor()}`;
         })
     })
     })
