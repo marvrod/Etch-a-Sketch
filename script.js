@@ -15,6 +15,7 @@ function randomRGB() {
     return RGB;
 }
 
+
 // Function for random hex color
 
 function getRandomColor() {
@@ -70,8 +71,24 @@ btn.addEventListener('click', () => {
 
     //Event listening for sketching
     column3.forEach((element) => {
+        const red = randomRGB();
+        const green = randomRGB();
+        const blue = randomRGB();
+        let red2 = red;
+        let green2 = green;
+        let blue2 = blue;
         element.addEventListener('mouseenter', ()=> {
-            element.style.backgroundColor=`${getRandomColor()}`;
+
+            if (!element.style.backgroundColor) {
+            element.style.backgroundColor=`rgb(${red2}, ${green2}, ${blue2})`;
+            }
+            else {
+                red2 = red2 - (red/10);
+                green2 = green2 - (green/10);
+                blue2 = blue2 - (blue/10);
+            element.style.backgroundColor=`rgb(${red2}, ${green2}, ${blue2})`;
+
+            }
         })
     })
     })
