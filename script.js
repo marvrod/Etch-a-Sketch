@@ -5,6 +5,9 @@ container.style.display = "flex";
 container.style.flexDirection = "column";
 container.alignItems = "center";
 container.justifyContent = "center";
+container.style.width = "400px";
+container.style.height="400px";
+
 
 // Function for random hex color
 
@@ -25,16 +28,21 @@ btn.style.margin = "20px";
 
 btn.addEventListener('click', () => {
  let gridNumber = prompt("How many rows?");
- container.innerHTML="";
+ if (gridNumber > 100 || gridNumber < 0) {
+    alert("Please add a valid number")
+ } else {
+    container.style.borderStyle="solid";
+    container.style.borderWidth="1px";
+    container.innerHTML="";
         // Loop for creating rows
  for (let i = 0; i < gridNumber; i++) {
 
     const row = document.createElement("div");
     row.style.display = "flex";
-    row.style.height=`20px`;
+    row.style.height=`${400 / gridNumber}px`;
     row.style.borderStyle="solid";
     row.style.borderWidth="0px";
-  
+
     container.appendChild(row);
     
 
@@ -44,9 +52,11 @@ btn.addEventListener('click', () => {
         column.classList.add("square");
         column.style.borderStyle="solid";
         column.style.borderColor="black";
+        column.style.borderWidth="1px";
         row.appendChild(column);
-        column.style.width=`14px`;
+        column.style.width=`${400 / gridNumber}px`;
     }
+}
 }
     const column2 = document.querySelectorAll(".square")
     const column3 = Array.from(column2);
