@@ -8,6 +8,12 @@ container.justifyContent = "center";
 container.style.width = "400px";
 container.style.height="400px";
 
+// Function for random rgb color, experimental
+
+function randomRGB() {
+    let RGB = Math.floor(Math.random()*255);
+    return RGB;
+}
 
 // Function for random hex color
 
@@ -31,6 +37,7 @@ btn.addEventListener('click', () => {
  if (gridNumber > 100 || gridNumber < 0) {
     alert("Please add a valid number")
  } else {
+    console.log(randomRGB());
     container.style.borderStyle="solid";
     container.style.borderWidth="1px";
     container.innerHTML="";
